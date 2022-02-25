@@ -1,0 +1,9 @@
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: /lapp_data/lsst/DC2  # dataset root dir
+train: /lapp_data/lsst/DC2/yoloTrain-gri-16bits/images  # train images (relative to 'path') 
+val: /lapp_data/lsst/DC2/yoloVal-gri-16bits/images  # val images (relative to 'path') 
+test:  # test images (optional)
+
+# Classes
+nc: 1  # number of classes
+names: ['cluster']

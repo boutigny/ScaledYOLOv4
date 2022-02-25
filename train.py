@@ -405,8 +405,8 @@ if __name__ == '__main__':
         if last and not opt.weights:
             print(f'Resuming training from {last}')
         opt.weights = last if opt.resume and not opt.weights else opt.weights
-    if opt.local_rank == -1 or ("RANK" in os.environ and os.environ["RANK"] == "0"):
-        check_git_status()
+    #if opt.local_rank == -1 or ("RANK" in os.environ and os.environ["RANK"] == "0"):
+    #    check_git_status()
 
     opt.hyp = opt.hyp or ('data/hyp.finetune.yaml' if opt.weights else 'data/hyp.scratch.yaml')
     opt.data, opt.cfg, opt.hyp = check_file(opt.data), check_file(opt.cfg), check_file(opt.hyp)  # check files
