@@ -14,6 +14,8 @@ from PIL import Image, ExifTags
 from torch.utils.data import Dataset
 from tqdm import tqdm
 
+from tifffile import imread, imwrite
+
 from utils.general import xyxy2xywh, xywh2xyxy, torch_distributed_zero_first
 
 help_url = ''
@@ -445,10 +447,12 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
         for (img, label) in pbar:
             try:
                 l = []
-                image = Image.open(img)
-                image.verify()  # PIL verify
+                ##image = Image.open(img)
+                image = imread(img)
+                ##image.verify()  # PIL verify
                 # _ = io.imread(img)  # skimage verify (from skimage import io)
-                shape = exif_size(image)  # image size
+                ##shape = exif_size(image)  # image size
+                shape = image.shape  # image size
                 assert (shape[0] > 9) & (shape[1] > 9), 'image size <10 pixels'
                 if os.path.isfile(label):
                     with open(label, 'r') as f:
